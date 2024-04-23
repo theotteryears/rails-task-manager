@@ -1,12 +1,16 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 20rem;">
 <h1 class="d-flex justify-content-center">My tasks</h1>
 </div>
 
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 20rem;">
 <ul class="list-group list-group-flush">
   <% @tasks.each do |task|%>
     <li class="list-group-item d-flex justify-content-between align-items-center">
-      <%= %>
+      <% if task.completed %>
+        <i class="fa-regular fa-square-check"></i>
+      <% else %>
+        <i class="fa-regular fa-square"></i>
+      <% end %>
       <%= link_to task.title, task_path(task) %>
       <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
         <i class="fa-solid fa-trash"></i>
@@ -19,9 +23,9 @@
 <%= link_to "Add a new task", new_task_path, class: "btn btn-primary" %>
 </div>
 
-
 <style>
   a {
     text-decoration: none;
+    color: black;
   }
 </style>
