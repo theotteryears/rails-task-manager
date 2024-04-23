@@ -6,7 +6,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    find_task
   end
 
   def new
@@ -20,17 +19,14 @@ class TasksController < ApplicationController
   end
 
   def edit
-    find_task
   end
 
   def update
-    find_task
     @task.update(task_params)
     redirect_to task_path(@task)
   end
 
   def destroy
-    find_task
     @task.destroy
     redirect_to tasks_path, status: :see_other
   end
