@@ -1,6 +1,13 @@
 <h2><%= @task.title %></h2>
 <p><%= @task.details %></p>
-<p>Completed: <%= @task.completed %></p>
 
-<%= link_to "Edit this task", edit_task_path %>
-<%= link_to "Back to list", tasks_path %>
+<% if @task.completed %>
+        Completed: <i class="fa-regular fa-square-check"></i>
+      <% else %>
+        Completed: <i class="fa-regular fa-square"></i>
+      <% end %>
+
+<p class="mt-3">
+<%= link_to "Edit this task", edit_task_path, class: "btn btn-primary" %>
+<%= link_to "Back to list", tasks_path, class: "btn btn-primary" %>
+</p>
